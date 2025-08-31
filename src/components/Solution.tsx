@@ -1,9 +1,12 @@
 import React from 'react';
-import { Scan, Smartphone, Zap, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { SOLUTION_FEATURES, PEACE_OF_MIND } from './Solution_components/types';
+import FeatureCard from './Solution_components/FeatureCard';
+import PeaceOfMind from './Solution_components/PeaceOfMind';
 
 const Solution: React.FC = () => {
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     triggerOnce: true,
     threshold: 0.1
   });
@@ -11,78 +14,105 @@ const Solution: React.FC = () => {
   return (
     <section 
       ref={ref}
-      className="relative py-20 overflow-hidden bg-white dark:bg-gray-800"
+      className="relative py-20 overflow-hidden bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950"
     >
-      {/* Neon Background Effects */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute w-64 h-64 bg-green-500 rounded-full top-1/2 left-1/4 filter blur-3xl animate-pulse"></div>
-        <div className="absolute w-64 h-64 delay-75 rounded-full bottom-1/4 right-1/4 bg-violet-500 filter blur-3xl animate-pulse"></div>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute w-96 h-96 bg-green-500/30 rounded-full -top-48 -left-48 filter blur-3xl animate-pulse"></div>
+        <div className="absolute w-96 h-96 bg-violet-500/30 rounded-full -bottom-48 -right-48 filter blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-white/10 dark:to-black/20"></div>
       </div>
 
       <div className="relative z-10 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="mb-16 text-center">
-            <h2 className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
-              The Game-Changing
-              <span className="ml-3 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-violet-500">
-                Solution
-              </span>
-            </h2>
-            <p className="max-w-3xl mx-auto text-xl text-gray-600 dark:text-gray-300">
-              Introducing the "No-ClockIn Attendance Revolution" using advanced facial recognition
-            </p>
-          </div>
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
+            The Game-Changing
+            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-violet-500">
+              Solution
+            </span>
+          </h2>
+          <p className="max-w-3xl mx-auto text-xl text-gray-600 dark:text-gray-300">
+            Introducing the "No-ClockIn Attendance Revolution" using advanced facial recognition
+          </p>
+        </motion.div>
 
-          <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
-            <div className="relative">
-              <div className="relative p-8 border shadow-2xl bg-gradient-to-br from-violet-900 to-green-900 dark:from-gray-900 dark:to-violet-900 rounded-2xl border-violet-500/20">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-violet-500/10 rounded-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center justify-center w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500/20 to-violet-500/20 animate-pulse">
-                    <Scan className="w-12 h-12 text-green-400" />
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* Main Feature Card */}
+          <motion.div 
+            className="relative group"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="relative p-8 overflow-hidden border rounded-2xl border-violet-500/20 bg-gradient-to-br from-violet-900/80 to-green-900/80 dark:from-gray-900/80 dark:to-violet-900/80 backdrop-blur-sm">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-violet-500/5"></div>
+              <div className="relative z-10">
+                <div className="flex items-center justify-center w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-500/20 to-violet-500/20 animate-pulse">
+                  <div className="w-12 h-12 text-green-400">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M7.5 12h9m-4.5 0v6m-3-9V9a3 3 0 013-3h4.5a3 3 0 013 3v.75M7.5 12h.008v.008H7.5V12zm9 0h.008v.008h-.008V12zm-9 6h.008v.008H7.5V18zm9 0h.008v.008h-.008V18z" />
+                    </svg>
                   </div>
-                  <h3 className="mb-4 text-2xl font-bold text-center text-white">
-                    AI Recognition Gate
-                  </h3>
-                  <p className="text-center text-gray-200">
-                    Students walk through naturally. Our advanced AI instantly recognizes them and sends real-time verification to parents.
-                  </p>
                 </div>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <div className="flex items-center p-4 space-x-4 border border-green-200 rounded-lg bg-green-50 dark:bg-green-900/20 dark:border-green-500/30">
-                <CheckCircle className="flex-shrink-0 w-6 h-6 text-green-600 dark:text-green-400" />
-                <span className="font-medium text-gray-800 dark:text-gray-200">
-                  No cards, no badges, no hassle
-                </span>
-              </div>
-              
-              <div className="flex items-center p-4 space-x-4 border border-blue-200 rounded-lg bg-blue-50 dark:bg-blue-900/20 dark:border-blue-500/30">
-                <Smartphone className="flex-shrink-0 w-6 h-6 text-blue-600 dark:text-blue-400" />
-                <span className="font-medium text-gray-800 dark:text-gray-200">
-                  Instant WhatsApp/SMS alerts to parents
-                </span>
-              </div>
-              
-              <div className="flex items-center p-4 space-x-4 border border-purple-200 rounded-lg bg-purple-50 dark:bg-purple-900/20 dark:border-purple-500/30">
-                <Zap className="flex-shrink-0 w-6 h-6 text-purple-600 dark:text-purple-400" />
-                <span className="font-medium text-gray-800 dark:text-gray-200">
-                  Real-time tracking and verification
-                </span>
-              </div>
-
-              <div className="p-6 mt-8 text-white shadow-lg bg-gradient-to-r from-green-500 to-violet-500 rounded-xl">
-                <h4 className="mb-2 text-lg font-bold">Peace of Mind Guarantee</h4>
-                <p className="text-green-50">
-                  Know exactly when your child arrives and leaves school, automatically.
+                <h3 className="mb-4 text-2xl font-bold text-center text-white">
+                  AI Recognition Gate
+                </h3>
+                <p className="text-center text-gray-200">
+                  Students walk through naturally. Our advanced AI instantly recognizes them and sends real-time verification to parents.
                 </p>
               </div>
+              
+              {/* Animated border effect */}
+              <div className="absolute inset-0 rounded-2xl p-px bg-gradient-to-r from-green-500/30 via-violet-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
+            
+            {/* Floating elements */}
+            {[...Array(3)].map((_, i) => (
+              <div 
+                key={i}
+                className="absolute rounded-full bg-gradient-to-r from-green-500/20 to-violet-500/20"
+                style={{
+                  width: `${Math.random() * 60 + 40}px`,
+                  height: `${Math.random() * 60 + 40}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  filter: 'blur(20px)',
+                  opacity: 0.6,
+                  animation: `float ${Math.random() * 10 + 10}s infinite alternate`
+                }}
+              />
+            ))}
+          </motion.div>
+
+          {/* Feature List */}
+          <div className="space-y-4">
+            {SOLUTION_FEATURES.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+            
+            <PeaceOfMind {...PEACE_OF_MIND} />
           </div>
         </div>
       </div>
+      
+      {/* Global styles for animations */}
+      <style>{`
+        @keyframes float {
+          0% { transform: translateY(0) rotate(0deg); }
+          100% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.6; }
+        }
+      `}</style>
     </section>
   );
 };
