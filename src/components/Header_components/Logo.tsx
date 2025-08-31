@@ -15,11 +15,13 @@ const Logo = () => {
       transition={{ duration: 0.3 }}
       className="flex items-center"
     >
-      <button 
-        onClick={scrollToTop}
-        className="transition-opacity focus:outline-none hover:opacity-90"
-        aria-label="Go to home"
-      >
+       <button
+         type="button"
+         onClick={scrollToTop}
+         className="transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500"
+         aria-label="Scroll to top"
+         title="Scroll to top"
+       >
         <img 
           src="/logo.png" 
           alt="SchoolRobot Edge Logo" 

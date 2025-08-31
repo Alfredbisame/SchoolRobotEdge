@@ -21,10 +21,12 @@ export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ partners, is
   const slidesCount = Math.ceil(partners.length / 3);
 
   const nextSlide = () => {
+    if (slidesCount <= 1) return;
     setCurrentSlide((prev) => (prev + 1) % slidesCount);
   };
 
   const prevSlide = () => {
+    if (slidesCount <= 1) return;
     setCurrentSlide((prev) => (prev - 1 + slidesCount) % slidesCount);
   };
 
@@ -41,8 +43,8 @@ export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ partners, is
           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
         >
           {Array.from({ length: slidesCount }).map((_, slideIndex) => (
-            <div key={slideIndex} className="w-full flex-shrink-0">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+            <div key={slideIndex} className="flex-shrink-0 w-full">
+              <div className="grid grid-cols-1 gap-6 px-4 md:grid-cols-3">
                 {partners
                   .slice(slideIndex * 3, slideIndex * 3 + 3)
                   .map((partner, index) => (
@@ -63,17 +65,17 @@ export const PartnersCarousel: React.FC<PartnersCarouselProps> = ({ partners, is
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-gray-700 transition-colors z-10"
+        className="absolute left-0 z-10 flex items-center justify-center w-12 h-12 transition-colors -translate-x-4 -translate-y-1/2 bg-white rounded-full shadow-lg top-1/2 dark:bg-gray-800 text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-gray-700"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-lg text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-gray-700 transition-colors z-10"
+        className="absolute right-0 z-10 flex items-center justify-center w-12 h-12 transition-colors translate-x-4 -translate-y-1/2 bg-white rounded-full shadow-lg top-1/2 dark:bg-gray-800 text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-gray-700"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="w-6 h-6" />
       </button>
 
       {/* Pagination Dots */}
