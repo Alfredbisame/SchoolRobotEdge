@@ -35,7 +35,7 @@ const Video: React.FC = () => {
           className="relative"
         >
           <VideoPlayer
-            videoSrc="/videos/demo.mp4"
+            videoSrc="/vid.mp4"
             posterSrc="/images/video-poster.jpg"
             title="SchoolRobot Edge Demo"
             className="mb-12"

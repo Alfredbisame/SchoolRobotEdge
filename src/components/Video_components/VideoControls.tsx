@@ -37,7 +37,7 @@ const VideoControls: React.FC<VideoControlsProps> = ({
         <div className="flex items-center space-x-4">
           <button 
             onClick={onPlayPause}
-            className="text-white hover:text-green-400 transition-colors p-2"
+            className="p-2 text-white transition-colors hover:text-green-400"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? (
@@ -49,7 +49,7 @@ const VideoControls: React.FC<VideoControlsProps> = ({
           
           <button 
             onClick={onMuteToggle}
-            className="text-white hover:text-green-400 transition-colors p-2"
+            className="p-2 text-white transition-colors hover:text-green-400"
             aria-label={isMuted ? 'Unmute' : 'Mute'}
           >
             {isMuted ? (
@@ -59,14 +59,14 @@ const VideoControls: React.FC<VideoControlsProps> = ({
             )}
           </button>
           
-          <div className="text-sm text-gray-300 font-medium">
+          <div className="text-sm font-medium text-gray-300">
             {formatTime(currentTime)} / {formatTime(duration)}
           </div>
         </div>
         
         <button 
           onClick={onFullscreenToggle}
-          className="text-white hover:text-green-400 transition-colors p-2"
+          className="p-2 text-white transition-colors hover:text-green-400"
           aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
         >
           {isFullscreen ? (
@@ -85,10 +85,19 @@ const VideoControls: React.FC<VideoControlsProps> = ({
             max={duration || 100}
             value={currentTime}
             onChange={handleTimeChange}
-            className="w-full h-full appearance-none bg-transparent [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:opacity-0 [&:hover::-webkit-slider-thumb]:opacity-100"
+            className="w-full h-10 appearance-none bg-transparent cursor-pointer
+              [&::-webkit-slider-thumb]:appearance-none
+              [&::-webkit-slider-thumb]:h-2 [&::-webkit-slider-thumb]:w-2
+              [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white
+              [&::-webkit-slider-thumb]:shadow-sm [&::-webkit-slider-thumb]:opacity-0
+              [&::-webkit-slider-thumb]:transition-all [&::-webkit-slider-thumb]:duration-150
+              [&:hover::-webkit-slider-thumb]:opacity-100
+              [&::-moz-range-thumb]:h-2 [&::-moz-range-thumb]:w-2
+              [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white
+              [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
           />
           <div 
-            className="absolute top-0 left-0 h-full bg-gradient-to-r from-green-500 to-violet-500 rounded-full transition-all duration-300 pointer-events-none"
+            className="absolute top-0 left-0 h-2 transition-all duration-150 ease-out rounded-full pointer-events-none bg-white/80"
             style={{ width: `${(currentTime / (duration || 1)) * 100}%` }}
           />
         </div>

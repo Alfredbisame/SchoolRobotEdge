@@ -37,7 +37,7 @@ export const VIDEO_CONTAINER_STYLES = "relative rounded-2xl overflow-hidden bg-g
 export const VIDEO_OVERLAY_STYLES = "absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none";
 export const VIDEO_PLAY_BUTTON_STYLES = "absolute inset-0 flex items-center justify-center group";
 export const VIDEO_CONTROLS_STYLES = "absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent";
-export const VIDEO_PROGRESS_BAR_STYLES = "w-full bg-white/20 rounded-full h-1.5 mt-2";
+export const VIDEO_PROGRESS_BAR_STYLES = "w-full bg-white/5 rounded-full h-0.5 mt-1 group-hover:h-0.75 transition-all duration-150 ease-in-out";
 export const VIDEO_FEATURES_GRID_STYLES = "grid grid-cols-1 md:grid-cols-3 gap-6 mt-12";
 export const VIDEO_FEATURE_CARD_STYLES = "group p-6 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg";
 
