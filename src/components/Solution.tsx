@@ -89,6 +89,11 @@ const Solution: React.FC = () => {
                 }}
               />
             ))}
+            
+            {/* Peace of Mind Card */}
+            <div className="mt-8">
+              <PeaceOfMind {...PEACE_OF_MIND} />
+            </div>
           </motion.div>
 
           {/* Feature List */}
@@ -96,8 +101,6 @@ const Solution: React.FC = () => {
             {SOLUTION_FEATURES.map((feature, index) => (
               <FeatureCard key={index} {...feature} />
             ))}
-            
-            <PeaceOfMind {...PEACE_OF_MIND} />
           </div>
         </div>
       </div>
